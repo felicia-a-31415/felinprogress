@@ -267,12 +267,17 @@
 .archived .subject-cell input[type='text'] { color: var(--muted); }
 .more { display: flex; align-items: center; justify-content: space-between; margin-top: 0.8rem; }
 
-/* On the timer screen the sounds panel floats at the left and the timer
-   keeps equal space on both sides, so it stays in the middle of the page.
-   Narrower windows have no room for that, so the panel sits beside it. */
+/* The sounds panel floats at the left and the screen keeps equal space on
+   both sides, so it stays in the middle of the page. Narrower windows have
+   no room for that, so the panel sits beside it. The stats page is wider
+   than the timer, so it needs a wider window before it can be centred. */
 @media (min-width: 1100px) {
-  .body.timer-centered .sounds { position: absolute; left: 1.5rem; top: 0.5rem; }
-  .body.timer-centered .main { padding-inline: calc(300px + 1.5rem); }
+  .body.centered-timer .sounds { position: absolute; left: 1.5rem; top: 0.5rem; }
+  .body.centered-timer .main { padding-inline: calc(300px + 1.5rem); }
+}
+@media (min-width: 1520px) {
+  .body.centered-stats .sounds { position: absolute; left: 1.5rem; top: 0.5rem; }
+  .body.centered-stats .main { padding-inline: calc(300px + 1.5rem); }
 }
 
 @media (max-width: 800px) {
@@ -292,3 +297,25 @@
   .week { gap: 0.25rem; }
   .logcard { right: 0.75rem; left: 0.75rem; bottom: 0.75rem; width: auto; }
 }
+
+/* date picker */
+.date-row { display: flex; align-items: center; gap: 0.25rem; }
+.date-row input { flex: 1; font-variant-numeric: tabular-nums; }
+.date-row input[aria-invalid='true']:not(:placeholder-shown) { border-color: var(--danger); }
+.date-row .icon-btn[aria-expanded='true'] { color: var(--accent); background: var(--track); }
+.calendar {
+  margin-top: 0.4rem; padding: 0.5rem; border-radius: 12px;
+  background: var(--raised); border: 1px solid var(--line);
+}
+.cal-head { display: flex; align-items: center; justify-content: space-between; color: var(--text); font-weight: 500; font-size: 0.9rem; }
+.cal-head .icon-btn { width: 2rem; height: 2rem; }
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; margin-top: 0.25rem; }
+.cal-dow { text-align: center; font-size: 0.7rem; color: var(--muted); padding: 0.2rem 0; }
+.cal-day {
+  padding: 0; height: 2rem; border-radius: 8px; border-color: transparent;
+  background: transparent; color: var(--text); font-weight: 400; font-size: 0.85rem;
+}
+.cal-day:hover:not(:disabled) { background: var(--track); border-color: transparent; }
+.cal-day[data-today] { border-color: var(--line); }
+.cal-day[aria-pressed='true'] { background: var(--accent); color: var(--accent-ink); }
+.cal-day:disabled { opacity: 0.3; }

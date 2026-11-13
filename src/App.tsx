@@ -118,7 +118,7 @@ export default function App() {
         </p>
       )}
 
-      <div className={`body${screen === 'timer' && settings.sidebarOpen ? ' timer-centered' : ''}`}>
+      <div className={`body${settings.sidebarOpen ? ` centered-${screen}` : ''}`}>
         {!settings.sidebarOpen && (
           <button
             className={`sounds-tab${playing ? ' playing' : ''}`}

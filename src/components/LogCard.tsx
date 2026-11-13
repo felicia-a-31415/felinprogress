@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { nextColor } from '../lib/palette.ts'
 import { formatDuration, hmsToSeconds, isDateKey, secondsToHms } from '../lib/time.ts'
 import type { LogDraft, Subject } from '../lib/types.ts'
+import { DatePicker } from './DatePicker.tsx'
 import { DurationFields } from './DurationFields.tsx'
 import { CloseIcon, PlusIcon } from './Icons.tsx'
 
@@ -81,10 +82,10 @@ export function LogCard({ draft, queued, subjects, preferredSubjectId, todayKey,
         )}
 
         {manual && (
-          <label className="field">
+          <div className="field">
             <span>Date</span>
-            <input type="date" value={date} max={todayKey} onChange={(e) => setDate(e.target.value)} />
-          </label>
+            <DatePicker value={date} max={todayKey} onChange={setDate} />
+          </div>
         )}
 
         <div className="field">

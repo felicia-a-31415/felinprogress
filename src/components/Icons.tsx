@@ -31,3 +31,6 @@ export const SunIcon = () => (
 export const MoonIcon = () => (
   <svg {...base}><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" /></svg>
 )
+export const CalendarIcon = () => (
+  <svg {...base}><rect x="4" y="5.5" width="16" height="14.5" rx="2.5" /><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4" /></svg>
+)
